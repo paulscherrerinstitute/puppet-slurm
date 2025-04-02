@@ -27,7 +27,8 @@ AllowSpecResourcesUsage=<%= @allow_spec_resources_usage %>
 <%= @chos_loc.nil? ? '#ChosLoc=' : ('ChosLoc=' + @chos_loc) %>
 <% unless @communication_parameters.nil? -%>CommunicationParameters=<%= @communication_parameters.join(',') %>
 <% end -%>
-CoreSpecPlugin=<%= @core_spec_plugin %>
+<% unless @core_spec_plugin.nil? -%>CoreSpecPlugin=<%= @core_spec_plugin %>
+<% end -%>
 <% unless @communication_parameters.nil? -%>CommunicationParameters=<%= @communication_parameters.join(',') %>
 <% end -%>
 CpuFreqDef=<%= @cpu_freq_def %>
@@ -77,7 +78,8 @@ MaxStepCount=<%= @max_step_count %>
 <% unless @plugin_dir.nil? -%>PluginDir=<%= @plugin_dir %>
 <% end -%>
 <%= @plug_stack_config.nil? ? '#PlugStackConfig=' : ('PlugStackConfig=' + @plug_stack_config) %>
-PowerPlugin=<%= @power_plugin %>
+<% unless @power_plugin.nil? -%>PowerPlugin=<%= @power_plugin %>
+<% end -%>
 <%# comment out if empty, expand array if not                                -%>
 <% if @power_parameters.nil? -%>
 #PowerParameters=
