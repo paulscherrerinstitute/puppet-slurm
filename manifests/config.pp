@@ -219,6 +219,7 @@ class slurm::config (
   Optional[String] $slurmd_log_file = undef,
   Integer[0,1] $slurm_sched_log_level = 0,
   Optional[String] $slurm_sched_log_file = undef,
+  Optional[Array[String]] $slurmd_parameters = undef,
 
   Optional[String] $health_check_program = undef,
   Array[String] $health_check_node_state = ['ANY'],
