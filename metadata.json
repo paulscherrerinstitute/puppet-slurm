@@ -1,6 +1,6 @@
 {
   "name": "puppet-slurm",
-  "version": "v24.11.4",
+  "version": "24.11.4",
   "author": "CERN and Paul Scherrer Institut",
   "summary": "This class manages Slurm",
   "license": "Apache-2.0",
