@@ -1,0 +1,27 @@
+{
+  "name": "puppet-slurm",
+  "version": "v24.11.4",
+  "author": "CERN and Paul Scherrer Institut",
+  "summary": "This class manages Slurm",
+  "license": "Apache-2.0",
+  "source": "https://github.com/paulscherrerinstitute/puppet-slurm",
+  "project_page": "https://github.com/cernops/puppet-slurm",
+  "issues_url": "https://github.com/paulscherrerinstitute/puppet-slurm/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9"
+      ]
+    }
+  ],
+  "dependencies": [],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 7.0.0 < 9.0.0"
+    }
+  ]
+}
