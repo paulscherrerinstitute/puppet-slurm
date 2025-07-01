@@ -33,7 +33,6 @@ class slurm::setup (
 
   ensure_packages($slurm::params::slurm_packages, {'ensure' => $slurm::params::slurm_version})
 
-  notify{"DEBUG Installing: ${slurm::params::slurm_packages}, ${slurm::params::configless_client_packages}":
   }
   
   group{ 'slurm':

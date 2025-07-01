@@ -15,6 +15,7 @@ class slurm::client {
 
   include ::slurm::setup
   include ::slurm::config
+  include ::slurm::client::setup
 
   Class['::slurm::setup'] -> Class['::slurm::config']
 }
