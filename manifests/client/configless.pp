@@ -20,9 +20,16 @@ Optional[String] $controllers = undef
 ) inherits slurm::params {
 
   ensure_packages($slurm::params::configless_client_packages, {'ensure' => $slurm::params::slurm_version})
+  $sackd_conf = '/etc/default/sackd'
 
-  file { '/etc/default/sackd': 
+  file { $sackd_conf: 
     content => " SACKD_OPTIONS='--conf-server ${controllers}'"
   }
+
+  service { 'sackd':
+    ensure => running,
+    enable => true,
+    subscribe => File[$sackd_conf]
+    }
 }
   
