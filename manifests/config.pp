@@ -253,7 +253,7 @@ class slurm::config (
 
 if !('enable_configless' in $slurmctld_parameters) {
   if ($workernodes == undef or $partitions == undef or $cluster_name == undef) {
-    fail{"workernodes, partitions, cluster_name variables need to be defined! "}
+    fail("workernodes, partitions, cluster_name variables need to be defined!")
   }
 }
 
