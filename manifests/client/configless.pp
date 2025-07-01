@@ -16,6 +16,7 @@
 #
 
 class slurm::client::configless (
+Optional[String] $controllers = undef 
 ) inherits slurm::params {
 
   ensure_packages($slurm::params::configless_client_packages, {'ensure' => $slurm::params::slurm_version})
