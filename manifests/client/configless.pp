@@ -23,13 +23,14 @@ Optional[String] $controllers = undef
   $sackd_conf = '/etc/default/sackd'
 
   file { $sackd_conf: 
-    content => " SACKD_OPTIONS='--conf-server ${controllers}'"
+    content =>  "SACKD_OPTIONS='--conf-server ${controllers}'"
   }
 
   service { 'sackd':
-    ensure => running,
-    enable => true,
-    subscribe => File[$sackd_conf]
+    ensure    => running,
+    enable    => true,
+    subscribe => File[$sackd_conf],
+    require   => File[$sackd_conf] 
     }
 }
   
