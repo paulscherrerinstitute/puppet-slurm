@@ -175,7 +175,7 @@ class slurm::config (
   Integer[0] $priority_weight_qos = 0,
   Optional[Hash[String,Integer[0]]] $priority_weight_tres = undef,
 
-  String $cluster_name = undef,
+  Optional[String] $cluster_name = undef,
   Optional[Array[String]] $communication_parameters = undef,
   Optional[String] $default_storage_host = undef,
   Optional[Integer[0]] $default_storage_port = undef,
@@ -240,9 +240,9 @@ class slurm::config (
   String $route_plugin = 'route/default',
   Integer[1] $tree_width = 50,
 
-  Array[Hash,1] $workernodes = undef, 
+  Optional[Array[Hash,1]] $workernodes = undef, 
   Optional[Array[Hash,1]] $nodesets = undef,
-  Array[Hash,1] $partitions = undef,
+  Optional[Array[Hash,1]] $partitions = undef,
   Optional[Array[Hash,1]] $gres_definitions = undef,
 
   Boolean $open_firewall = false,
