@@ -30,7 +30,7 @@ Optional[String] $controllers = undef
     ensure    => running,
     enable    => true,
     subscribe => File[$sackd_conf],
-    require   => [File[$sackd_conf], Package[$slurm::params::configless_client_packages]] 
+    require   => [File[$sackd_conf], Package[$slurm::params::configless_client_packages], Service[munge]] 
     }
 }
   
