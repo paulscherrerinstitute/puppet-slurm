@@ -15,11 +15,13 @@
 # License: GNU GPL v3 or later.
 #
 
-class slurm::client::setup (
+class slurm::client::configless (
 ) inherits slurm::params {
 
- if ('enable_configless' in $slurm::config::slurmctld_parameters)
-    {
-    ensure_packages($slurm::params::configless_client_packages, {'ensure' => $slurm::params::slurm_version})
-    }
+  ensure_packages($slurm::params::configless_client_packages, {'ensure' => $slurm::params::slurm_version})
+
+  file { '/etc/default/sackd': 
+    content => " SACKD_OPTIONS='--conf-server ${controllers}'"
+  }
 }
+  
