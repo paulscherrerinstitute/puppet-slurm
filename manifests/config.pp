@@ -175,7 +175,7 @@ class slurm::config (
   Integer[0] $priority_weight_qos = 0,
   Optional[Hash[String,Integer[0]]] $priority_weight_tres = undef,
 
-  String $cluster_name,
+  String $cluster_name = undef,
   Optional[Array[String]] $communication_parameters = undef,
   Optional[String] $default_storage_host = undef,
   Optional[Integer[0]] $default_storage_port = undef,
@@ -240,9 +240,9 @@ class slurm::config (
   String $route_plugin = 'route/default',
   Integer[1] $tree_width = 50,
 
-  Array[Hash,1] $workernodes,
+  Array[Hash,1] $workernodes = undef, 
   Optional[Array[Hash,1]] $nodesets = undef,
-  Array[Hash,1] $partitions,
+  Array[Hash,1] $partitions = undef,
   Optional[Array[Hash,1]] $gres_definitions = undef,
 
   Boolean $open_firewall = false,
@@ -250,6 +250,12 @@ class slurm::config (
   Optional[String] $include_file = undef,
   Boolean $include_only = false,
 ) inherits slurm::params {
+
+if !('enable_configless' in $slurmctld_parameters) {
+  if ($workernodes == undef or $partitions == undef or $cluster_name == undef) {
+    fail{"workernodes, partitions, cluster_name variables need to be defined! "}
+  }
+}
 
   # The following variables are version dependent
   if $slurmctld_syslog_debug != undef or $slurmd_syslog_debug != undef {
