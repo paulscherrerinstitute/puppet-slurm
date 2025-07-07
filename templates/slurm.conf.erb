@@ -167,6 +167,8 @@ SlurmdPort=<%= @slurmd_port %>
 SlurmdSpoolDir=<%= @slurmd_spool_dir %>
 SlurmUser=<%= @slurm_user %>
 SlurmdUser=<%= @slurmd_user %>
+<% unless @slurmd_parameters.nil? -%>SlurmdParameters=<%= @slurmd_parameters.join(',') %>
+<% end -%>
 <%# SRUN GENERAL OPTIONS                                                     -%>
 <%= @srun_epilog.nil? ? '#SrunEpilog=' : ('SrunEpilog=' + @srun_epilog) %>
 <%= @srun_prolog.nil? ? '#SrunProlog=' : ('SrunProlog=' + @srun_prolog) %>
