@@ -22,6 +22,19 @@
 8. [Contributors](#contributors)
 9. [Credits] (#credits)
 
+# PSI-specific workflow for code changes
+
+When wanting to introduce changes:
+- [puppet-slurm] create a new branch (eg. `feature_x`) in this repo from `production`;
+- [PSI puppet] create a new branch from `preprod`;
+- [PSI puppet] modify the `Puppetfile` with `ref => "feature_x"` for the module `puppet-slurm`;
+- validate code;
+- [puppet-slurm] once the code is ready, create a pull request of `feature_x` to `production`;
+- [puppet-slurm] create a tag from the latest commit named like `vYYYY-MM-DD` (eg. `v2025-06-12`);
+- [puppet-slurm] delete the branch `feature_x`;
+- [PSI puppet] modify the `Puppetfile` with `ref => "vYYYY-MM-DD"` for the module `puppet-slurm`;
+- [PSI puppet] validate code and create a pull request to `preprod`.
+
 # Description
 
 This module installs the SLURM scheduler for running parallel programs on an HPC cluster.

@@ -32,6 +32,9 @@ class slurm::params(
         'slurm-perlapi',
         'slurm-torque',
       ]
+      $configless_client_packages = [
+        'slurm-sackd'
+      ]
 
       if versioncmp($slurm_version, '17.2') <= 0 {
         $slurm_packages_old = ['slurm-munge', 'slurm-plugins']

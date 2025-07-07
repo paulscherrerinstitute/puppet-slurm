@@ -16,5 +16,9 @@ class slurm::client {
   include ::slurm::setup
   include ::slurm::config
 
+  if ('enable_configless' in $slurm::config::slurmctld_parameters) {
+    include ::slurm::client::configless
+  }
+
   Class['::slurm::setup'] -> Class['::slurm::config']
 }

@@ -33,6 +33,7 @@ class slurm::setup (
 
   ensure_packages($slurm::params::slurm_packages, {'ensure' => $slurm::params::slurm_version})
 
+  
   group{ 'slurm':
     ensure => present,
     gid    => $slurm_gid,
