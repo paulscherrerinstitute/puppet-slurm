@@ -224,7 +224,7 @@ class slurm::config (
   Enum['route/default','route/topology'] $route_plugin = 'route/default',
   Integer[1] $tree_width = 50,
 
-  Array[Hash,1] $workernodes,
+  Array[Hash,0] $workernodes,
   Array[Hash,1] $partitions,
 
   Boolean $open_firewall = false,
