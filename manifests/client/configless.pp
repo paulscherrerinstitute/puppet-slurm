@@ -19,9 +19,12 @@ class slurm::client::configless (
 Optional[String] $controllers = undef 
 ) inherits slurm::params {
 
+  include ::slurm::config
+  
   ensure_packages($slurm::params::configless_client_packages, {'ensure' => $slurm::params::slurm_version})
   $sackd_conf = '/etc/default/sackd'
-
+  $sackd_override_dir = '/etc/systemd/system/sackd.service.d'
+  $sackd_override = "${sackd_override_dir}/munge_requirement.conf"
   file { $sackd_conf: 
     content =>  "SACKD_OPTIONS='--conf-server ${controllers}'"
   }
@@ -30,7 +33,23 @@ Optional[String] $controllers = undef
     ensure    => running,
     enable    => true,
     subscribe => File[$sackd_conf],
-    require   => [File[$sackd_conf], Package[$slurm::params::configless_client_packages], Service[munge]] 
+    require   => [File[$sackd_conf], Package[$slurm::params::configless_client_packages], Service['munge']]
+  }
+  if  ($slurm::config::auth_type == 'auth/munge') or
+  ($slurm::config::crypto_type == 'crypto/munge') {
+    file {
+      $sackd_override_dir:
+        ensure  => directory;
+      $sackd_override:
+        ensure  => file,
+        mode    => '0644',
+        content => '[Unit]
+After=munge.service
+Wants=munge.service
+',
+        before => Service['sackd'],
+        notify => Service['sackd']
+    }
     }
 }
   
