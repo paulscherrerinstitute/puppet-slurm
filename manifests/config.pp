@@ -240,7 +240,7 @@ class slurm::config (
   String $route_plugin = 'route/default',
   Integer[1] $tree_width = 50,
 
-  Optional[Array[Hash,1]] $workernodes = undef, 
+  Optional[Array[Hash,0]] $workernodes = undef, 
   Optional[Array[Hash,1]] $nodesets = undef,
   Optional[Array[Hash,1]] $partitions = undef,
   Optional[Array[Hash,1]] $gres_definitions = undef,
